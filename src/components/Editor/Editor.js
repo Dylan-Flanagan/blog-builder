@@ -2,12 +2,22 @@ import React from 'react';
 
 import './Editor.css';
 
-export default function Editor({ title, setTitle, subtitle, setSubtitle, text, setText }) {
+export default function Editor({
+  title,
+  setTitle,
+  subtitle,
+  setSubtitle,
+  text,
+  setText,
+  font,
+  setFont,
+}) {
   const handleChange = (event) => {
-    console.log('event.target.value', event.target.value);
+    // console.log('event.target.value', event.target.value);
     event.target.name === 'title' && setTitle(event.target.value);
     event.target.name === 'subtitle' && setSubtitle(event.target.value);
     event.target.name === 'text' && setText(event.target.value);
+    event.target.name === 'font' && setFont(event.target.value);
   };
 
   return (
@@ -21,7 +31,7 @@ export default function Editor({ title, setTitle, subtitle, setSubtitle, text, s
         <label>Subtitle</label>
       </div>
       <div className="form-control">
-        <select>
+        <select name="font" value={font} onChange={handleChange}>
           <option value="architect">{"Architect's Daughter"}</option>
           <option value="comforter">Comforter</option>
           <option value="fredoka">Fredoka</option>
